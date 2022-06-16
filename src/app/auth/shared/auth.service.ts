@@ -26,6 +26,7 @@ export class AuthService {
       { responseType: 'text' })
       .subscribe(data => {
         console.log(data);
+        this.loggedIn.emit(false);
       }, error => {
         throwError(error);
       })

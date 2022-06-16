@@ -11,7 +11,7 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path : '', component: HomeComponent},
+  { path : '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'view-post/:id', component: ViewPostComponent },
   { path: 'subreddits', component: ListSubredditsComponent },
