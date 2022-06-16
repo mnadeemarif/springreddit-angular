@@ -1,0 +1,11 @@
+<div class="sidebar-view-subreddit pt-3 d-flex flex-column">
+    <div style="color: black; font-weight: bold" class="row justify-content-center">Browse Subreddits</div>
+    <hr />
+    <span *ngFor="let subreddit of subreddits"  >
+        <span class="subreddit-text px-4 py-2 "><a href="/view-subreddit/{{subreddit.id}}" class="text-subreddit">{{subreddit.name}}</a></span>
+        <hr *ngIf="subreddits.indexOf(subreddit) < (subreddits.length-1)"/>
+    </span>
+    <div style="text-align: center" class="btn btn-primary w-100 rounded-0 mt-auto" *ngIf="displayViewAll">
+        <a style="font-weight: bold; color:white" class = "text-subreddit" routerLink="/subreddits">View All</a>
+    </div>
+</div>

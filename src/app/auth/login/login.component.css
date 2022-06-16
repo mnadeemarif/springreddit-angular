@@ -1,0 +1,40 @@
+.login-section{
+    margin: 100px;
+}
+
+.login-failed{
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 0px solid black;
+    color: white;
+    width: 65%;    
+    background-color: #e91e63;
+}
+
+.login-failed-text{
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;    
+    color: aliceblue;
+}
+
+.login {
+    background-color: #0079D3;
+    border-color: #0079D3;
+    color: aliceblue;
+    fill: #0079D3;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;
+  }
