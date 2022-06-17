@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { CommentPayload } from 'src/app/shared/comments/comment.request.payload';
@@ -21,12 +21,12 @@ export class ViewPostComponent implements OnInit {
   comments: Array<CommentPayload> = [];
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute,
-    private commentService: CommentService, private router: Router) {
+    private commentService: CommentService, private fb:FormBuilder, private router: Router) {
     this.postId = this.activateRoute.snapshot.params['id'];
 
     this.getPostById();
 
-    this.commentForm = new FormGroup({
+    this.commentForm = fb.group({
       text: new FormControl('', Validators.required)
     });
     this.commentPayload = {
@@ -41,13 +41,15 @@ export class ViewPostComponent implements OnInit {
   }
 
   postComment() {
-    this.commentPayload.text = this.commentForm.get('text').value;
-    this.commentService.postComment(this.commentPayload).subscribe(data => {
+    if(this.commentForm.get('text').value !== ""){
+      this.commentPayload.text = this.commentForm.get('text').value;
+      this.commentService.postComment(this.commentPayload).subscribe(data => {
       this.commentForm.get('text').setValue('');
       this.getCommentsForPost();
     }, error => {
       throwError(error);
     })
+    }
   }
 
   private getPostById() {
